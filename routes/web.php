@@ -12,24 +12,19 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
-Route::get('/', function () {
-    return view('home');
-});
 
-Route::get('/register', function () {
-    return view('register');
-});
+// Tugas 12
+// Route::get('/', 'HomeController@home');
 
-Route::post('/welcome', 'AuthController@req');
-*/
+Route::get('/register', 'AuthController@register');
 
+Route::post('/welcome', 'AuthController@welcome');
+
+//Tugas 13
 Route::get('/', function(){
-    return view('table');
+    return view('task13.taskTable');
 });
 
-Route::get('/data-tables',function(){
-    return view('data-tables');
+Route::get('/data-table', function(){
+    return view('task13.dataTable');
 });
-
-?>

@@ -1,55 +1,68 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>AdminLTE 3 | Starter</title>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AdminLTE 3 | Blank Page</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    @stack('scripts')
-    @stack('test')
+  <!-- Font Awesome -->
+  {{-- asset dianggap direktorinya udah di public  --}}
+  <link rel="stylesheet" href="{{ asset('admin-lte-template/plugins/fontawesome-free/css/all.min.css')}}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{{asset('admin-lte-template/dist/css/adminlte.min.css')}}">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini">
-    <div class="wrapper">
-      <!-- Navbar -->
-      @include('adminLTE.partial.navbar')
-      <!-- Sidebar -->
-      @include('adminLTE.partial.sidebar')
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-           @yield('content')
-      </div>
-      <!-- /.content-wrapper -->
-      <!-- Control Sidebar -->
-      <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-        <div class="p-3">
-            <h5>Title</h5>
-            <p>Sidebar content</p>
-        </div>
-      </aside>
-      <!-- /.control-sidebar -->
+<!-- Site wrapper -->
+<div class="wrapper">
 
-      <!-- Main Footer -->
-      <footer class="main-footer">
-        <!-- To the right -->
-        <div class="float-right d-none d-sm-inline">
-          <strong>Version</strong> 3.0.5
-        </div>
-        <!-- Default to the left -->
-        <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-      </footer>
+  <!-- Navbar -->
+  {{-- include dianggap direktorinya udah di views --}}
+@include('adminLTE.partial.navbar')
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  @include('adminLTE.partial.sidebar')
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+  
+      @yield('content')
+    
+  </div>
+  <!-- /.content-wrapper -->
+
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.0.5
     </div>
-    <!-- ./wrapper -->
+    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="{{ asset('admin-lte-template/plugins/jquery/jquery.min.js') }}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{ asset('admin-lte-template/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('admin-lte-template/dist/js/adminlte.min.js') }}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{ asset('admin-lte-template/dist/js/demo.js') }}"></script>
+
+@stack('script')
+
 </body>
 </html>
