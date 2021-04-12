@@ -29,7 +29,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('task13.dataTable');
 // });
 
-//Task 15
+// Task 15
 Route::GET('/pertanyaan', 'PertanyaanController@index');
 Route::GET('/pertanyaan/create', 'PertanyaanController@create');
 Route::POST('/pertanyaan', 'PertanyaanController@store');
@@ -37,3 +37,9 @@ Route::GET('/pertanyaan/{id}', 'PertanyaanController@show');
 Route::GET('/pertanyaan/edit/{id}','PertanyaanController@edit');
 Route::POST('/pertanyaan/{id}','PertanyaanController@update');
 Route::GET('/pertanyaan/delete/{id}','PertanyaanController@destroy');
+
+Route::resource('/pertanyaan', 'PertanyaanController');
+// Route::resource([
+//     'photos' => PhotoController::Mahasiswa,
+//     'posts' => PostController::Mahasiswa,
+// ]);

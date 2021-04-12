@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Mahasiswa;
 
 class PertanyaanController extends Controller
 {
@@ -14,7 +15,8 @@ class PertanyaanController extends Controller
      */
     public function index()
     {
-        $quest = DB::table('Mahasiswa')->get();
+        // $quest = DB::table('Mahasiswa')->get();
+        $quest = Mahasiswa::orderBy('updated_at', 'desc')->get();
         return view('CRUD\table', compact('quest'));
     }
 
@@ -37,10 +39,13 @@ class PertanyaanController extends Controller
      */
     public function store(Request $request)
     {
-        DB::table('Mahasiswa')->insert([
-            'pertanyaan' => $request->name,
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
+        // DB::table('Mahasiswa')->insert([
+        //     'pertanyaan' => $request->name,
+        //     'created_at' => date('Y-m-d H:i:s'),
+        //     'updated_at' => date('Y-m-d H:i:s')
+        // ]);
+        Mahasiswa::create([
+               'pertanyaan' => $request->name,
         ]);
         return redirect(url('/pertanyaan'));
     }
@@ -65,7 +70,8 @@ class PertanyaanController extends Controller
      */
     public function edit($id)
     {
-        $data = DB::table('Mahasiswa')->where('id',$id)->first();
+        // $data = DB::table('Mahasiswa')->where('id',$id)->first();
+        $data = Mahasiswa::where('id',$id)->first();
         return view('CRUD\edit',compact('data'));
     }
 
@@ -78,10 +84,13 @@ class PertanyaanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        DB::table('Mahasiswa')->where('id', "=", $id)->update([
-            'pertanyaan'=> $request->data,
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
+        // DB::table('Mahasiswa')->where('id', "=", $id)->update([
+        //     'pertanyaan'=> $request->data,
+        //     'updated_at' => date('Y-m-d H:i:s')
+        // ]);
+        $todo = Mahasiswa::findOrFail($id);
+        $todo->pertanyaan = $request->data;
+        $todo->save();
         return redirect(url('/pertanyaan'));
     }
 
@@ -93,7 +102,8 @@ class PertanyaanController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('Mahasiswa')->where('id',$id)->delete();
+        // DB::table('Mahasiswa')->where('id',$id)->delete();
+        Mahasiswa::find($id)->delete();
         return redirect(url('/pertanyaan'));
     }
 }
